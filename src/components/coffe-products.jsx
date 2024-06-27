@@ -3,39 +3,62 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import Products from "../data/dataCoffe";
+import React, { useEffect, useState } from "react";
+import CoffeeType from "./coffee Type/coffeeType";
+import BestSeller from "../data/dataCoffe";
+import { IndoCoffee } from "../data/indoCoffee";
+import featured from "../data/featured";
 
 export const CoffeProducts = () => {
-  const produk = Products;
+  const [data, setData] = useState([]);
+  const [path, setPath] = useState("featured");
+
+  useEffect(() => {
+    switch (path) {
+      case "featured":
+        setData(featured);
+        break;
+      case "latest":
+        setData(IndoCoffee);
+        break;
+      case "Bestseller":
+        setData(BestSeller);
+        break;
+      default:
+        break;
+    }
+  }, [path]);
+
+  const setpath = (path, e) => {
+    e.preventDefault();
+    setPath(path);
+  };
 
   return (
-    <div className="mb-8 shadow-sm rounded-xl w-full text-center">
+    <div className="mb-8 rounded-xl w-full text-center">
       <h1 className="mt-4 mb-6 text-3xl font-bold text-black md:text-2xl">
         Our Special Coffee
       </h1>
+      <div className="flex justify-center items-center gap-4 w-full font-normal text-sm mt-0 mb-5">
+        <CoffeeType text={"featured"} setpath={setpath} />
+        <CoffeeType text={"latest"} setpath={setpath} />
+        <CoffeeType text={"Bestseller"} setpath={setpath} />
+      </div>
+
       <div className="w-full flex justify-center items-center container mx-auto">
         <Swiper
-          spaceBetween={10}
-          slidesPerView={6}
+          spaceBetween={5}
+          slidesPerView={7}
           navigation={true}
           modules={[Navigation]}
           className="w-full"
         >
-          {produk.map((e) => (
-            <>
+          {data?.map((e, i) => (
+            <React.Fragment key={i}>
               <SwiperSlide className="flex flex-col md:flex-row md:justify-center w-full relative">
-                <Card
-                  key={e.id}
-                  title={e.title}
-                  price={e.price}
-                  description={e.description}
-                  img={e.img}
-                  rating={e.rate}
-                  type={e.type}
-                  id={e.id}
-                />
+                <Card key={e.id} title={e.title} img={e.image} />
               </SwiperSlide>
-            </>
+            </React.Fragment>
           ))}
         </Swiper>
       </div>

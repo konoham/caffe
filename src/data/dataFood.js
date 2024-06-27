@@ -4,7 +4,8 @@ export const FoodItems = [
     calories: 450,
     foodType: "Breakfast",
     id: 1,
-    description: "Pengalaman sarapan yang tiada duanya dengan ayam lembut di atas sebuah biskuit hangat yang empuk. Memberi energi untuk memulai hari dengan sempurna.",
+    description:
+      "Pengalaman sarapan yang tiada duanya dengan ayam lembut di atas sebuah biskuit hangat yang empuk. Memberi energi untuk memulai hari dengan sempurna.",
     price: 25_000,
     img: "/product/food1.jpg",
     rate: 4.4,
@@ -15,7 +16,8 @@ export const FoodItems = [
     calories: 350,
     foodType: "Breakfast",
     id: 2,
-    description: "Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
+    description:
+      "Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
     price: 20_000,
     img: "/product/food2.jpg",
     rate: 4.5,
@@ -26,7 +28,8 @@ export const FoodItems = [
     calories: 420,
     id: 3,
     foodType: "Breakfast",
-    description: "Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
+    description:
+      "Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
     price: 30_000,
     img: "/product/food3.jpg",
     rate: 4.3,
@@ -37,7 +40,8 @@ export const FoodItems = [
     calories: 600,
     id: 4,
     foodType: "Breakfast",
-    description: " Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
+    description:
+      " Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
     price: 35_000,
     img: "/product/food4.jpg",
     rate: 4.5,
@@ -48,7 +52,8 @@ export const FoodItems = [
     calories: 240,
     id: 5,
     foodType: "Breakfast",
-    description: "Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
+    description:
+      "Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
     price: 15_000,
     img: "/product/food5.jpg",
     rate: 4.8,
@@ -59,7 +64,8 @@ export const FoodItems = [
     calories: 45,
     id: 6,
     foodType: "Breakfast",
-    description: " Segar, manis, dan menyegarkan, potongan buah-buahan segar ini adalah mood boster yang sempurna untuk memulai hari anda dengan penuh energi.",
+    description:
+      " Segar, manis, dan menyegarkan, potongan buah-buahan segar ini adalah mood boster yang sempurna untuk memulai hari anda dengan penuh energi.",
     price: 12_000,
     img: "/product/food6.jpg",
     rate: 4.9,
@@ -70,7 +76,8 @@ export const FoodItems = [
     calories: 300,
     id: 7,
     foodType: "Breakfast",
-    description: "Biskuit yang dibuat dengan cinta dan diolesi dengan mentega yang melimpah. Kenikmatan sederhana namun tak terlupakan untuk melengkapi sarapan Anda.",
+    description:
+      "Biskuit yang dibuat dengan cinta dan diolesi dengan mentega yang melimpah. Kenikmatan sederhana namun tak terlupakan untuk melengkapi sarapan Anda.",
     price: 10_000,
     img: "/product/food7.jpg",
     rate: 4.6,
@@ -80,7 +87,8 @@ export const FoodItems = [
     title: "Greek Yogurt Parfait",
     calories: 230,
     id: 8,
-    description: "Lapisan yogurt Yunani kaya protein, diselingi dengan lapisan buah-buahan segar dan granola renyah. Sarapan yang sehat namun tetap memanjakan lidah Anda.",
+    description:
+      "Lapisan yogurt Yunani kaya protein, diselingi dengan lapisan buah-buahan segar dan granola renyah. Sarapan yang sehat namun tetap memanjakan lidah Anda.",
     price: 13_000,
     img: "/product/food8.jpg",
     rate: 5,
