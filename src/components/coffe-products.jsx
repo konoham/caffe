@@ -47,7 +47,7 @@ export const CoffeProducts = () => {
 
       <div className="w-full flex justify-center items-center container mx-auto">
         <Swiper
-          spaceBetween={5}
+          spaceBetween={2}
           slidesPerView={7}
           navigation={true}
           modules={[Navigation]}

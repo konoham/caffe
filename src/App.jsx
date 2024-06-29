@@ -6,9 +6,9 @@ import { FoodProducts } from "./components/food-product";
 import { About } from "./components/about";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ProductPage } from "./pages/product-detail";
-import { LoginPage } from "./pages/loginPage";
 import Keunggulan from "./components/keunggulan";
 import Categori from "./components/Top Categori/Categori";
+import Picture from "./components/ProfilPicture/Picture";
 
 function App() {
   return (
@@ -19,8 +19,6 @@ function App() {
           <Route path="/" element={<MainContent />} />
           <Route path="/:coffee/:id" element={<ProductPage />} />
           <Route path="/:breakfast/:id" element={<ProductPage />} />
-          <Route path="/RegisPage/login" element={<LoginPage />} />
-          <Route path="/RegisPage/sing-up" element={<LoginPage />} />
         </Routes>
       </div>
     </Router>
@@ -34,6 +32,7 @@ function MainContent() {
       <Keunggulan />
       <Categori />
       <CoffeProducts />
+      <Picture />
       <FoodProducts />
       <About />
     </div>

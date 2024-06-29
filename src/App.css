@@ -59,3 +59,38 @@ body {
   height: 15px;
   z-index: 2;
 }
+
+.picture {
+  display: grid;
+  grid-template: repeat(2, 200px) / 1fr 300px 300px 1fr;
+  grid-template-areas:
+    "top center center right"
+    "bottom center center left";
+  gap: 8px;
+}
+
+.left {
+  grid-area: left;
+  width: 100%;
+  height: 100%;
+}
+.right {
+  grid-area: right;
+  width: 100%;
+  height: 100%;
+}
+.bottom {
+  grid-area: bottom;
+  width: 100%;
+  height: 100%;
+}
+.top {
+  grid-area: top;
+  width: 100%;
+  height: 100%;
+}
+.center {
+  grid-area: center;
+  width: 100%;
+  height: 100%;
+}
