@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import DataSlide from "../../data/slide";
 
 export const HomePage = () => {
@@ -10,8 +10,12 @@ export const HomePage = () => {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: true,
+        }}
         navigation={true}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         className="w-full h-full"
       >
         {DataSlide.map((item) => (

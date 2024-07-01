@@ -6,7 +6,7 @@ const Categori = () => {
       <h1 className="my-4 text-black font-bold text-2xl capitalize">
         top categori
       </h1>
-      <div className="w-full flex justify-center items-center gap-8 ">
+      <div className="w-full flex justify-center items-center flex-wrap gap-8 ">
         <div className="w-[220px] h-fit relative">
           <img
             src="./Top Categori/1.jpg"

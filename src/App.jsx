@@ -7,9 +7,10 @@ import Keunggulan from "./components/keunggulan";
 import Categori from "./components/Top Categori/Categori";
 import Picture from "./components/ProfilPicture/Picture";
 import { CoffeProducts } from "./components/coffee-product/coffe-products";
-import { FoodProducts } from "./components/Food-Product/food-product";
 import Blog from "./components/Blog/Blog";
 import Footer from "./components/Footer/footer";
+import { SpecialProduct } from "./components/SpecialProduct/Special-product";
+import FormPage from "./components/Form/Form";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<MainContent />} />
           <Route path="/:coffee/:id" element={<ProductPage />} />
           <Route path="/:breakfast/:id" element={<ProductPage />} />
+          <Route path="/Login" element={<FormPage />} />
         </Routes>
       </div>
     </Router>
@@ -34,7 +36,7 @@ function MainContent() {
       <Categori />
       <CoffeProducts />
       <Picture />
-      <FoodProducts />
+      <SpecialProduct />
       <Blog />
       <Footer />
     </div>

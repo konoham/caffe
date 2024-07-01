@@ -1,26 +1,21 @@
-import { Gift } from "@phosphor-icons/react";
+import { ArrowLineRight, CaretDoubleRight, Gift } from "@phosphor-icons/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import DataKenggulan from "../data/keunggulan ";
 
 const Keunggulan = () => {
   return (
     <div
-      className="w-full container mx-auto ps-10 flex justify-center items-center gap-8 text-black md:overflow-x-hidden  my-12"
+      className="w-full container mx-auto md:ps-10 ps-14 gap-8 text-black md:overflow-x-hidden my-12"
       id="keunggulan"
     >
       <Swiper
         spaceBetween={20}
-        navigation
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: true,
+        }}
         breakpoints={{
-          480: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
           768: {
             slidesPerView: 4,
             spaceBetween: 40,
@@ -31,7 +26,7 @@ const Keunggulan = () => {
           },
         }}
         pagination={true}
-        modules={[Pagination]}
+        modules={[Pagination, Autoplay]}
         className=""
       >
         {DataKenggulan.map((item) => (
@@ -50,6 +45,9 @@ const Keunggulan = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      {/* <p className="w-full flex justify-center items-center pt-4 ms-[-1rem] text-slate-500 slide">
+        <ArrowLineRight size={20} />
+      </p> */}
     </div>
   );
 };

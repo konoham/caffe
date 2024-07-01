@@ -15,7 +15,7 @@ export default function Navbar() {
     >
       <nav className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
         <div className="flex items-center justify-between">
-          <a className="flex-none text-2xl font-bold text-black" href="#">
+          <a className="flex-none text-2xl font-bold text-black" href="/">
             Brand
           </a>
         </div>
@@ -41,7 +41,7 @@ export default function Navbar() {
             </a>
             <a
               className="font-semibold text-sm hover:text-primary "
-              href="#special-Coffee"
+              href="/#special-Coffee"
             >
               Pruduct
             </a>
@@ -56,20 +56,9 @@ export default function Navbar() {
           </div>
         </div>
         <div className="w-fit flex justify-center items-center gap-2">
-          <Link to={`/RegisPage/login`} className="w-fit">
-            <p
-              className=" inline-flex justify-center items-center gap-2 bg-transparent text-sm font-medium text-center text-gray-500 rounded-lg hover:text-blue-600"
-              href="#"
-            >
+          <Link to={`/Login`} className="w-fit">
+            <p className="font-semibold text-sm hover:text-primary " href="#">
               Login
-            </p>
-          </Link>
-          <Link to={`/registrasi/sing-up`}>
-            <p
-              className="w-full inline-flex justify-center items-center gap-2 bg-transparent text-sm font-medium text-center text-gray-500 rounded-lg hover:text-blue-600"
-              href="#"
-            >
-              sing up
             </p>
           </Link>
         </div>

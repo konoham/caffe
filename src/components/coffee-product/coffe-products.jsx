@@ -47,10 +47,28 @@ export const CoffeProducts = () => {
 
       <div className="w-full flex justify-center items-center container mx-auto">
         <Swiper
-          spaceBetween={2}
-          slidesPerView={7}
+          spaceBetween={10}
+          slidesPerView={2}
           navigation={true}
           modules={[Navigation]}
+          breakpoints={{
+            480: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 7,
+              spaceBetween: 10,
+            },
+          }}
           className="w-full"
         >
           {data?.map((e, i) => (
