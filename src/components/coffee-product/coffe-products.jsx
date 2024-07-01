@@ -1,13 +1,13 @@
-import { Card } from "./card";
+import { Card } from "../card/card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import React, { useEffect, useState } from "react";
-import CoffeeType from "./coffee Type/coffeeType";
-import BestSeller from "../data/dataCoffe";
-import { IndoCoffee } from "../data/indoCoffee";
-import featured from "../data/featured";
+import CoffeeType from "../coffee Type/coffeeType";
+import BestSeller from "../../data/dataCoffe";
+import { IndoCoffee } from "../../data/indoCoffee";
+import featured from "../../data/featured";
 
 export const CoffeProducts = () => {
   const [data, setData] = useState([]);
@@ -35,7 +35,7 @@ export const CoffeProducts = () => {
   };
 
   return (
-    <div className="mb-8 rounded-xl w-full text-center">
+    <div className="mb-8 rounded-xl w-full text-center" id="special-Coffee">
       <h1 className="mt-4 mb-6 text-3xl font-bold text-black md:text-2xl">
         Our Special Coffee
       </h1>

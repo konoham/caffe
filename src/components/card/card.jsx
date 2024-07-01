@@ -38,7 +38,7 @@ export const Card = (props) => {
               <Star />
             </i>
           </div>
-          <h3 className="font-semibold">{props.title}</h3>
+          <h3 className="font-semibold text-center">{props.title}</h3>
           <div className="flex justify-between items-center w-full ">
             <Basket
               size={32}

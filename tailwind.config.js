@@ -9,5 +9,8 @@ export default {
       },
     },
   },
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: [
+    // require("@tailwindcss/line-clamp"),
+    // require("prettier-plugin-tailwindcss"),
+  ],
 };

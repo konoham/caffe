@@ -1,62 +1,26 @@
 export const FoodItems = [
   {
-    title: "Chicken Biscuit",
-    calories: 450,
+    title: "Buttermilk Biscuit",
+    calories: 300,
     foodType: "Breakfast",
     id: 1,
     description:
-      "Pengalaman sarapan yang tiada duanya dengan ayam lembut di atas sebuah biskuit hangat yang empuk. Memberi energi untuk memulai hari dengan sempurna.",
-    price: 25_000,
-    img: "/product/food1.jpg",
-    rate: 4.4,
-    type: "food",
-  },
-  {
-    title: "Chicken Minis",
-    calories: 350,
-    foodType: "Breakfast",
-    id: 2,
-    description:
-      "Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
-    price: 20_000,
-    img: "/product/food2.jpg",
-    rate: 4.5,
-    type: "food",
-  },
-  {
-    title: "Bacon Egg and Cheese Biscuit",
-    calories: 420,
-    id: 3,
-    foodType: "Breakfast",
-    description:
-      "Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
-    price: 30_000,
-    img: "/product/food3.jpg",
-    rate: 4.3,
-    type: "food",
-  },
-  {
-    title: "Sausage Egg and Cheese Biscuit",
-    calories: 600,
-    id: 4,
-    foodType: "Breakfast",
-    description:
-      " Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
-    price: 35_000,
-    img: "/product/food4.jpg",
-    rate: 4.5,
-    type: "food",
-  },
-  {
-    title: "Hash Browns",
-    calories: 240,
-    id: 5,
-    foodType: "Breakfast",
-    description:
-      "Gigitan kecil yang penuh dengan rasa, potongan ayam yang lembut diselimuti dalam mini roti yang lezat. Pilihan tepat untuk memulai pagi dengan ceria.",
+      "A fluffy buttermilk biscuit made with premium ingredients, perfect for a hearty breakfast or snack. Pair it with butter or your favorite jam.",
     price: 15_000,
-    img: "/product/food5.jpg",
+    img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fEJ1dHRlcm1pbGslMjBCaXNjdWl0fGVufDB8fDB8fHww",
     rate: 4.8,
+    type: "food",
+  },
+  {
+    title: "Blueberry Muffin",
+    calories: 320,
+    foodType: "Breakfast",
+    id: 4,
+    description:
+      "A freshly baked blueberry muffin bursting with juicy blueberries, topped with a sprinkle of sugar. Perfect for a quick and delicious breakfast.",
+    price: 18_000,
+    img: "https://plus.unsplash.com/premium_photo-1711684804216-4ad043c102d3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ymx1ZWJlcnJ5JTIwbXVmZmlufGVufDB8fDB8fHww",
+    rate: 4.5,
     type: "food",
   },
   {

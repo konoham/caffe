@@ -1,14 +1,15 @@
 import "./App.css";
 import Navbar from "./components/navbar";
-import { HomePage } from "./components/home";
-import { CoffeProducts } from "./components/coffe-products";
-import { FoodProducts } from "./components/food-product";
-import { About } from "./components/about";
+import { HomePage } from "./components/Hero/home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ProductPage } from "./pages/product-detail";
 import Keunggulan from "./components/keunggulan";
 import Categori from "./components/Top Categori/Categori";
 import Picture from "./components/ProfilPicture/Picture";
+import { CoffeProducts } from "./components/coffee-product/coffe-products";
+import { FoodProducts } from "./components/Food-Product/food-product";
+import Blog from "./components/Blog/Blog";
+import Footer from "./components/Footer/footer";
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function MainContent() {
       <CoffeProducts />
       <Picture />
       <FoodProducts />
-      <About />
+      <Blog />
+      <Footer />
     </div>
   );
 }

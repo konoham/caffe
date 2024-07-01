@@ -94,3 +94,20 @@ body {
   width: 100%;
   height: 100%;
 }
+
+@media screen and (max-width: 480px) {
+  .swiper-button-prev {
+    opacity: 0;
+  }
+  .swiper-button-next {
+    opacity: 0;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .swiper-button-prev:nth-child(2) {
+    opacity: 0;
+  }
+  .swiper-button-next:nth-child(2) {
+    opacity: 0;
+  }
+}
