@@ -10,12 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.6.0",
     "@phosphor-icons/react": "^2.1.6",
     "@tailwindcss/line-clamp": "^0.4.4",
-    "firebase": "^10.10.0",
+    "dotenv": "^16.4.5",
+    "firebase": "^10.12.2",
     "form": "^0.2.4",
-    "formik": "^2.4.5",
-    "formix": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook": "^0.0.1",
@@ -24,7 +24,8 @@
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.4",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",

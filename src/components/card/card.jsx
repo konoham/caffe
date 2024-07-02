@@ -39,7 +39,7 @@ export const Card = (props) => {
             </i>
           </div>
           <h3 className="font-semibold text-center">{props.title}</h3>
-          <div className="flex justify-between items-center w-full ">
+          <div className="flex justify-between items-center w-full pe-4">
             <Basket
               size={32}
               className="text-primary border border-primary p-1.5 rounded-full"
