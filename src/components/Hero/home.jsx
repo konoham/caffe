@@ -3,6 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import DataSlide from "../../data/slide";
+import React from "react";
 
 export const HomePage = () => {
   return (
@@ -14,12 +15,13 @@ export const HomePage = () => {
           delay: 2500,
           disableOnInteraction: true,
         }}
+        loop={true}
         navigation={true}
         modules={[Navigation, Autoplay]}
         className="w-full h-full"
       >
-        {DataSlide.map((item) => (
-          <>
+        {DataSlide.map((item, i) => (
+          <React.Fragment key={i}>
             <SwiperSlide className="w-full">
               <img
                 className="relative w-full h-full block object-cover bg-top"
@@ -37,7 +39,7 @@ export const HomePage = () => {
                 </a>
               </div>
             </SwiperSlide>
-          </>
+          </React.Fragment>
         ))}
       </Swiper>
     </div>

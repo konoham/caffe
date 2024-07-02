@@ -15,6 +15,7 @@ const Keunggulan = () => {
           delay: 2500,
           disableOnInteraction: true,
         }}
+        loop={true}
         breakpoints={{
           768: {
             slidesPerView: 4,
@@ -29,8 +30,8 @@ const Keunggulan = () => {
         modules={[Pagination, Autoplay]}
         className=""
       >
-        {DataKenggulan.map((item) => (
-          <SwiperSlide key={item.title}>
+        {DataKenggulan.map((item, i) => (
+          <SwiperSlide key={i}>
             <div className="second-card flex justify-center box-border p-4 rounded-xl items-center">
               <Gift size={32} className="w-fit my-auto text-primary" />
               <div className="flex justify-center items-start flex-col flex-grow-0 flex-shrink-0 px-4 text-start w-[90%]">

@@ -202,3 +202,15 @@ body {
     clip-path: circle(100%);
   }
 }
+
+.googleprofile::before {
+  content: "This is the text that appears when the image is clicked.";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}
