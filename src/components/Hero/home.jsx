@@ -29,7 +29,7 @@ export const HomePage = () => {
               />
               <div className="container me-auto absolute top-1/2 left-1/2 translate-x-[-50%] px-6 md:px-0">
                 <h1
-                  className="md:text-5xl font-bold capitalize md:w-1/3 w-1/2 text-2xl text-wrap tracking-wide mb-4"
+                  className="md:text-5xl font-bold capitalize md:w-1/3 w-[60%] text-2xl text-wrap tracking-wide mb-4"
                   id="textHome"
                 >
                   {item.description}

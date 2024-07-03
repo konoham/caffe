@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "../utility/Store";
-import { Hamburger } from "@phosphor-icons/react";
+import { List } from "@phosphor-icons/react";
 
 export default function Navbar() {
   const [change, setChange] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const user = useUser((state) => state.user);
   const checkScroll = () => {
-    window.scrollY >= 100 ? setChange(true) : setChange(false);
+    if (window.scrollY) {
+      setIsOpen(false);
+      if (window.scrollY >= 100) {
+        setChange(true);
+      } else {
+        setChange(false);
+      }
+    }
   };
 
   window.addEventListener("scroll", checkScroll);
@@ -29,9 +37,9 @@ export default function Navbar() {
 
         <div
           id=""
-          className="absolute -right-52 bottom-0 top-full bg-black flex flex-col justify-start items-center md:block"
+          className={`absolute bottom-0 top-full ${isOpen ? "right-0 " : "-right-52"} bg-black md:static md:bg-transparent flex flex-col justify-start items-center md:block`}
         >
-          <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5 text-white ms-10">
+          <div className="flex flex-col px-4 gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5 text-white ms-10">
             <a
               className={`font-semibold text-sm ${change ? "text-white" : "text-primary hover:text-white"}`}
               href="/"
@@ -70,7 +78,7 @@ export default function Navbar() {
           {!user ? (
             <Link to={`/Login`} className="w-fit">
               <button
-                className={`font-semibold text-sm py-2 px-5 rounded-lg ${change ? "text-primary bg-white hover:text-black" : "text-white bg-primary hover:text-black"}`}
+                className={`font-semibold text-sm py-2 px-5 rounded-lg me-[-5rem] ${change ? "text-primary bg-white hover:text-black" : "text-white bg-primary hover:text-black"}`}
                 href="#"
               >
                 Login
@@ -94,7 +102,11 @@ export default function Navbar() {
             </details>
           )}
         </div>
-        <Hamburger size={24} />
+        <List
+          onClick={() => setIsOpen((prev) => !prev)}
+          size={32}
+          className="md:hidden block"
+        />
       </nav>
     </header>
   );
