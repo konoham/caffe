@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "../utility/Store";
-import { List } from "@phosphor-icons/react";
+import { Basket, List } from "@phosphor-icons/react";
+import Cart from "./Cart/Cart";
 
 export default function Navbar() {
   const [change, setChange] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
   const user = useUser((state) => state.user);
   const checkScroll = () => {
     if (window.scrollY) {
       setIsOpen(false);
+      setOpenCart(false);
       if (window.scrollY >= 100) {
         setChange(true);
       } else {
@@ -22,9 +25,9 @@ export default function Navbar() {
 
   return (
     <header
-      className={`flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full fixed bg-opacity-90 text-sm py-3 shadow-sm text-white ${change ? "bg-primary" : "bg-transparent"} duration-300`}
+      className={`flex flex-wrap sm:justify-start sm:flex-nowrap w-full z-50 fixed bg-opacity-90 text-sm py-3 shadow-sm text-white  ${change ? "bg-primary" : "bg-transparent"} duration-300`}
     >
-      <nav className="md:px-10 w-full mx-auto px-4 flex items-center justify-between relative">
+      <nav className="md:px-56 w-full mx-auto px-4 flex items-center justify-between relative">
         <div className="flex items-center justify-between">
           <a
             className={`flex-none text-2xl font-bold flex justify-center items-center gap-2 ${change ? "text-white" : "text-primary"}`}
@@ -102,11 +105,23 @@ export default function Navbar() {
             </details>
           )}
         </div>
-        <List
-          onClick={() => setIsOpen((prev) => !prev)}
-          size={32}
-          className="md:hidden block"
-        />
+        <div className="flex justify-center items-center">
+          <List
+            onClick={() => setIsOpen((prev) => !prev)}
+            size={32}
+            className="md:hidden block"
+          />
+          <Basket
+            onClick={() => setOpenCart((prev) => !prev)}
+            size={32}
+            className=" block"
+          />
+        </div>
+        <div
+          class={`absolute z-[99999] top-full bottom-0 pointer-events-auto w-[450px] ${openCart ? "right-0" : "right-[-100rem]"}`}
+        >
+          <Cart setOpenCart={setOpenCart} />
+        </div>
       </nav>
     </header>
   );

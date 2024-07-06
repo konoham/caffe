@@ -15,7 +15,7 @@ const Categori = () => {
           />
           <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-10 text-white">
             <h1>expresso</h1>
-            <a href="/">view more</a>
+            <a href="http://localhost:5173/Categori">view more</a>
           </div>
         </div>
         <div className="w-[220px] h-fit relative">
