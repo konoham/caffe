@@ -74,7 +74,13 @@ export const CoffeProducts = () => {
           {data?.map((e, i) => (
             <React.Fragment key={i}>
               <SwiperSlide className="flex flex-col md:flex-row md:justify-center w-full relative">
-                <Card key={e.id} title={e.title} img={e.image} />
+                <Card
+                  key={e.id}
+                  name={e.name}
+                  price={e.price}
+                  images={e.images}
+                  country={e.country}
+                />
               </SwiperSlide>
             </React.Fragment>
           ))}

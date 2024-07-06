@@ -53,8 +53,7 @@ const FormPage = () => {
       }
     }
     localStorage.setItem("user", JSON.stringify(req.user));
-    const Storege = localStorage.getItem("user");
-    setUser(JSON.parse(Storege));
+    setUser(req.user);
     navigate("/");
   };
   const SignUp = async (value) => {
@@ -74,8 +73,7 @@ const FormPage = () => {
       }
     }
     localStorage.setItem("user", JSON.stringify(req.user));
-    const Storege = localStorage.getItem("user");
-    setUser(JSON.parse(Storege));
+    setUser(req.user);
     navigate("/");
   };
   const signUpwhithGoogle = async () => {

@@ -1,7 +1,11 @@
 // Card.js
 import { Basket, Star } from "@phosphor-icons/react";
+import AddToCartBtn from "./addToCartBtn";
+import { useUser } from "../../utility/Store";
 
 export const Card = (props) => {
+  const user = useUser((state) => state.user);
+
   const rupiah = (price) => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -14,7 +18,7 @@ export const Card = (props) => {
       <div className="flex justify-start items-center flex-col gap-4 pb-4 text-black font-semibold shadow-sm object-fill w-[195px] h-fit">
         <div id="des" className="w-full">
           <img
-            src={props.img}
+            src={props.images}
             alt=""
             className="w-full object-center object-cover rounded-t-md rounded-b-sm block mx-auto h-[220px] relative"
             id="des"
@@ -38,12 +42,24 @@ export const Card = (props) => {
               <Star />
             </i>
           </div>
-          <h3 className="font-semibold text-center">{props.title}</h3>
+          <h3 className="font-semibold text-center">{props.name}</h3>
           <div className="flex justify-between items-center w-full pe-4">
-            <Basket
-              size={32}
-              className="text-primary border border-primary p-1.5 rounded-full"
-            />
+            {user?.email ? (
+              <AddToCartBtn
+                name={props.name}
+                price={props.price}
+                images={props.images}
+                country={props.country}
+              />
+            ) : (
+              <a href="/Login">
+                <Basket
+                  size={32}
+                  className="text-primary border border-primary p-1.5 rounded-full"
+                />
+              </a>
+            )}
+
             <h3 className="text-black font-bold">Rp. 10.000</h3>
           </div>
         </div>
