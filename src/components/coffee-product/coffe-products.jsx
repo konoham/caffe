@@ -75,7 +75,6 @@ export const CoffeProducts = () => {
             <React.Fragment key={i}>
               <SwiperSlide className="flex flex-col md:flex-row md:justify-center w-full relative">
                 <Card
-                  key={e.id}
                   name={e.name}
                   price={e.price}
                   images={e.images}

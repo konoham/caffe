@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { useCartSuccses, useqty } from "../../utility/Store";
 
 const Cart = ({ setOpenCart }) => {
   const [product, setProduct] = useState();
+  const success = useCartSuccses((state) => state.success);
+  const qty = useqty((state) => state.qty);
+  console.log(qty);
 
   const getProduct = async () => {
     try {
@@ -15,9 +19,8 @@ const Cart = ({ setOpenCart }) => {
 
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [success]);
 
-  console.log(product);
   return (
     <div class="flex h-svh flex-col z-30 shadow-xl">
       <div class="flex-1 px-4 py-6 sm:px-6 bg-white backdrop-blur-sm rounded-md overflow-y-auto">
@@ -76,7 +79,7 @@ const Cart = ({ setOpenCart }) => {
                         <p class="mt-1 text-sm text-gray-500">{item.country}</p>
                       </div>
                       <div class="flex flex-1 items-end justify-between text-sm">
-                        <p class="text-gray-500">Qty 1</p>
+                        <p class="text-gray-500">qty {qty}</p>
 
                         <div class="flex">
                           <button

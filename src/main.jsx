@@ -11,9 +11,7 @@ const queryClient = new QueryClient();
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </QueryClientProvider>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );

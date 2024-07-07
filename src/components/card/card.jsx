@@ -1,7 +1,8 @@
 // Card.js
 import { Basket, Star } from "@phosphor-icons/react";
-import AddToCartBtn from "./addToCartBtn";
+
 import { useUser } from "../../utility/Store";
+import AddToCartBtn from "../AddToCart/addToCartBtn";
 
 export const Card = (props) => {
   const user = useUser((state) => state.user);
@@ -60,7 +61,7 @@ export const Card = (props) => {
               </a>
             )}
 
-            <h3 className="text-black font-bold">Rp. 10.000</h3>
+            <h3 className="text-black font-bold">Rp.{props.price}</h3>
           </div>
         </div>
       </div>

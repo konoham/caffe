@@ -1,7 +1,8 @@
 import { Card } from "../card/card";
 import "swiper/css";
 import "swiper/css/navigation";
-import { FoodItems } from "../../data/dataFood";
+import { DataSpecialProduct } from "../../data/dataFood";
+console.log(DataSpecialProduct);
 
 export const SpecialProduct = () => {
   return (
@@ -11,8 +12,8 @@ export const SpecialProduct = () => {
       </h1>
       <div className="w-full flex container mx-auto">
         <div className="flex flex-col md:flex-row md:justify-center items-center gap-4 md:gap-8 w-full relative">
-          {FoodItems.map((e, i) => (
-            <Card key={i} title={e.title} img={e.img} />
+          {DataSpecialProduct.map((e, i) => (
+            <Card name={e.name} images={e.images} price={e.price} />
           ))}
         </div>
       </div>
