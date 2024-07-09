@@ -51,6 +51,7 @@ export const Card = (props) => {
                 price={props.price}
                 images={props.images}
                 country={props.country}
+                qty={props.qty}
               />
             ) : (
               <a href="/Login">

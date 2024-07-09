@@ -1,19 +1,29 @@
 import { Minus, Plus, WarningCircle, X } from "@phosphor-icons/react";
-import { useCartSuccses, useErrorMessage, useqty } from "../../utility/Store";
+import { useErrorMessage, useIdProduct } from "../../utility/Store";
+import usePatchProduct from "../../feature/usePatchProduct";
 
-const ModalIncreas = () => {
-  const qty = useqty((state) => state.qty);
-  const setQty = useqty((state) => state.setQty);
+const ModalIncreas = (props) => {
   const setMessageError = useErrorMessage((state) => state.setMessageError);
+  const idProduct = useIdProduct((state) => state.idProduct);
 
   const closeFcn = () => {
     setMessageError(false);
     setQty(1);
   };
+  const data = {
+    id: idProduct,
+    name: props.name,
+    price: props.price,
+    images: props.images,
+    email: props.email,
+    country: props.country,
+    qty: qty,
+  };
+  console.log(idProduct);
 
   console.log(qty);
   return (
-    <div className=" overflow-y-auto overflow-x-hidden fixed top-1/2 left-0 right-0 flex justify-center items-start z-50 w-full ">
+    <div className=" fixed top-10 left-0 right-0 flex justify-center items-start z-50 w-full ">
       <div className="relative p-4 w-full max-w-md max-h-full">
         <div className="relative bg-white rounded-lg shadow h-fit">
           <button
@@ -34,7 +44,7 @@ const ModalIncreas = () => {
                 className="rounded-full p-2 bg-black text-white"
                 onClick={() => setQty(qty + 1)}
               />
-              <h1>{qty}</h1>
+              <h1 className="text-black text-xl">{qty}</h1>
               <Minus
                 size={32}
                 className="rounded-full p-2 bg-black text-white"
@@ -44,7 +54,7 @@ const ModalIncreas = () => {
             <button
               type="button"
               className="text-white bg-red-600 hover:bg-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
-              onClick={() => setMessageError(false)}
+              onClick={() => patchProduct(data)}
             >
               Yes, I'm sure
             </button>

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useUser } from "../utility/Store";
+import { useErrorMessage, useUser } from "../utility/Store";
 import { Basket, List } from "@phosphor-icons/react";
 import Cart from "./Cart/Cart";
 
@@ -9,6 +9,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const user = useUser((state) => state.user);
+  const messageError = useErrorMessage((state) => state.messageError);
   const checkScroll = () => {
     if (window.scrollY) {
       setIsOpen(false);
@@ -23,9 +24,16 @@ export default function Navbar() {
 
   window.addEventListener("scroll", checkScroll);
 
+  useEffect(() => {
+    if (messageError) {
+      setOpenCart(true);
+      // alert("iufgaifgaifg");
+    }
+  }, [messageError]);
+
   return (
     <header
-      className={`flex flex-wrap sm:justify-start sm:flex-nowrap w-full z-50 fixed bg-opacity-90 text-sm py-3 shadow-sm text-white  ${change ? "bg-primary" : "bg-transparent"} duration-300`}
+      className={`flex flex-wrap sm:justify-start sm:flex-nowrap w-full z-50 fixed bg-opacity-90 text-sm py-3 shadow-sm text-white ${change ? "bg-primary" : "bg-transparent"} duration-300`}
     >
       <nav className="md:px-56 w-full mx-auto px-4 flex items-center justify-between relative">
         <div className="flex items-center justify-between">

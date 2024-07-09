@@ -1,6 +1,3 @@
-import Swal from "sweetalert2";
-import { useCartSuccses, useErrorMessage } from "../../utility/Store";
-
 const useAddCart = async (data) => {
   try {
     const Post = await fetch("http://localhost:2000/CART", {

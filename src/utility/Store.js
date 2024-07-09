@@ -9,9 +9,9 @@ export const useCartSuccses = create((set) => ({
   setSuccess: (success) => set(() => ({ success })),
 }));
 
-export const useqty = create((set) => ({
-  qty: 1,
-  setQty: (qty) => set(() => ({ qty })),
+export const useIdProduct = create((set) => ({
+  idProduct: null,
+  setIdProduct: (idProduct) => set(() => ({ idProduct })),
 }));
 
 export const useErrorMessage = create((set) => ({

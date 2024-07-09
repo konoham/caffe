@@ -12,12 +12,10 @@ import { SpecialProduct } from "./components/SpecialProduct/Special-product";
 import FormPage from "./components/Form/Form";
 import CategoriPage from "./pages/Categori";
 import Cart from "./components/Cart/Cart";
-import { useErrorMessage, useUser } from "./utility/Store";
-import ModalIncreas from "./components/modal/modalIncreas";
+import { useUser } from "./utility/Store";
 
 function App() {
   const setUser = useUser((state) => state.setUser);
-  const messageError = useErrorMessage((state) => state.messageError);
   const Storege = localStorage.getItem("user");
 
   if (Storege) {
@@ -34,7 +32,6 @@ function App() {
           <Route path="/Categori" element={<CategoriPage />} />
           <Route path="/Cart" element={<Cart />} />
         </Routes>
-        {messageError ? <ModalIncreas /> : null}
       </div>
     </Router>
   );
