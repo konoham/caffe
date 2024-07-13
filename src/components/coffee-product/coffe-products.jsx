@@ -5,28 +5,15 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import React, { useEffect, useState } from "react";
 import CoffeeType from "../coffee Type/coffeeType";
-import BestSeller from "../../data/dataCoffe";
-import { IndoCoffee } from "../../data/indoCoffee";
-import featured from "../../data/featured";
+import SwitchType from "../../feature/swicthTypeCoffee";
 
 export const CoffeProducts = () => {
-  const [data, setData] = useState([]);
   const [path, setPath] = useState("featured");
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    switch (path) {
-      case "featured":
-        setData(featured);
-        break;
-      case "latest":
-        setData(IndoCoffee);
-        break;
-      case "Bestseller":
-        setData(BestSeller);
-        break;
-      default:
-        break;
-    }
+    const setType = SwitchType(path);
+    setData(setType);
   }, [path]);
 
   const setpath = (path, e) => {

@@ -8,6 +8,7 @@ import { Minus, Plus } from "@phosphor-icons/react";
 import usePatchProduct from "../../feature/usePatchProduct";
 import useDeleteProduct from "../../feature/deletePoduct";
 import Swal from "sweetalert2";
+import BuyBtn from "./buyBtn";
 
 const Cart = ({ setOpenCart }) => {
   const [product, setProduct] = useState();
@@ -152,14 +153,13 @@ const Cart = ({ setOpenCart }) => {
                             }
                           />
                         </div>
-                        <div className="flex">
-                          <button
-                            type="button"
-                            className="font-medium text-white px-5 py-2 rounded-lg bg-primary hover:text-indigo-500"
-                            onClick={() => deleteProduct(item.id)}
-                          >
-                            Buy
-                          </button>
+                        <div className="flex bg-gray-900">
+                          <BuyBtn
+                            id={item.id}
+                            name={item.name}
+                            price={item.price}
+                            qty={item.qty}
+                          />
                         </div>
                       </div>
                     </div>

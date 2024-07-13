@@ -269,3 +269,7 @@ body {
     transform: rotate(1turn);
   }
 }
+
+#hero-categori {
+  clip-path: polygon(0 0, 100% 0, 100% 34%, 0% 100%);
+}

@@ -14,12 +14,12 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBUmOfoTtlCaRdBz8rkLA5_9YxfQbKS4f0",
-  authDomain: "aroma-cafe-807fa.firebaseapp.com",
-  projectId: "aroma-cafe-807fa",
-  storageBucket: "aroma-cafe-807fa.appspot.com",
-  messagingSenderId: "1035367212956",
-  appId: "1:1035367212956:web:e39140d913a8b1150d8a59",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 if (!getApps().length) {

@@ -1,4 +1,4 @@
-export const IndoCoffee = [
+const IndoCoffee = [
   {
     name: "Kopi Tubruk",
     price: 15000,
@@ -70,3 +70,5 @@ export const IndoCoffee = [
     qty: 1,
   },
 ];
+
+export default IndoCoffee;
