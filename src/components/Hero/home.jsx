@@ -7,7 +7,7 @@ import React from "react";
 
 export const HomePage = () => {
   return (
-    <div className="w-full h-[300px] md:h-[700px] hero">
+    <div className="hero h-[300px] w-full md:h-[700px]">
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -18,28 +18,26 @@ export const HomePage = () => {
         loop={true}
         navigation={true}
         modules={[Navigation, Autoplay]}
-        className="w-full h-full"
+        className="h-full w-full"
       >
         {DataSlide.map((item, i) => (
-          <React.Fragment key={i}>
-            <SwiperSlide className="w-full">
-              <img
-                className="relative w-full h-full block object-cover bg-top"
-                src={item.img}
-              />
-              <div className="container me-auto absolute top-1/2 left-1/2 translate-x-[-50%] px-6 md:px-0">
-                <h1
-                  className="md:text-5xl font-bold capitalize md:w-1/3 w-[60%] text-2xl text-wrap tracking-wide mb-4"
-                  id="textHome"
-                >
-                  {item.description}
-                </h1>
-                <a className="py-2 px-3 font-semibold rounded-lg text-white hover:bg-gray-900 disabled:opacity-50 mt-4 bg-primary md:px-4 md:py-2 text-sm ">
-                  Beli Sekarang
-                </a>
-              </div>
-            </SwiperSlide>
-          </React.Fragment>
+          <SwiperSlide key={i} className="w-full">
+            <img
+              className="relative block h-full w-full bg-top object-cover"
+              src={item.img}
+            />
+            <div className="container absolute left-1/2 top-1/2 me-auto translate-x-[-50%] px-6 md:px-0">
+              <h1
+                className="mb-4 w-[60%] text-wrap text-2xl font-bold capitalize tracking-wide md:w-1/3 md:text-5xl"
+                id="textHome"
+              >
+                {item.description}
+              </h1>
+              <a className="mt-4 rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-white hover:bg-gray-900 disabled:opacity-50 md:px-4 md:py-2">
+                Beli Sekarang
+              </a>
+            </div>
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>

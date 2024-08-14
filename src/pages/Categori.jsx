@@ -15,19 +15,19 @@ const CategoriPage = () => {
   console.log(type);
 
   return (
-    <div className="h-fit bg-[#F9F6F1]">
-      <div className="h-[500px]">
+    <div className="h-[1024px] min-h-svh bg-gradient-to-br from-yellow-100 to-yellow-50">
+      <div className="relative h-[500px]">
         <img
-          className=" w-full h-full object-cover bg-center"
+          className="h-full w-full bg-center object-cover"
           src="/asset/hero.categori.jpg"
           id="hero-categori"
         />
       </div>
-      <div className=" relative container bg-transparent w-full h-full -mt-64">
-        <h1 className=" text-6xl font-semibold text-primary">
+      <div className="container absolute top-72 z-10 h-full w-full">
+        <h1 className="text-6xl font-semibold uppercase text-primary">
           {type} COFFEE☕
         </h1>
-        <div className="absolute top-20 z-10 grid grid-cols-7 gap-2 container">
+        <div className="container flex flex-wrap items-center justify-center gap-2">
           {data.map((item) => (
             <Card
               name={item.name}

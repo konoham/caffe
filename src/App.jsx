@@ -14,6 +14,7 @@ import CategoriPage from "./pages/Categori";
 import Cart from "./components/Cart/Cart";
 import { useUser } from "./utility/Store";
 import TopCategori from "./components/Top Categori/topCategori";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const setUser = useUser((state) => state.setUser);
@@ -25,14 +26,15 @@ function App() {
 
   return (
     <Router>
-      <div className="bg-[#F9F6F1] h-fit" id="main-container">
+      <div className="h-fit bg-[#F9F6F1]" id="main-container">
         <Navbar />
         <Routes>
           <Route path="/" element={<MainContent />} />
-          <Route path="/Login" element={<FormPage />} />
+          <Route path="/auth" element={<FormPage />} />
           <Route path="/Categori/:type" element={<CategoriPage />} />
           <Route path="/Cart" element={<Cart />} />
         </Routes>
+        <Toaster />
       </div>
     </Router>
   );
@@ -40,15 +42,15 @@ function App() {
 
 function MainContent() {
   return (
-    <div className="w-full h-fit text-black" id="second-container">
+    <div className="h-fit w-full text-black" id="second-container">
       <HomePage />
       <Keunggulan />
       <TopCategori />
       <CoffeProducts />
-      <Picture />
+      {/* <Picture />
       <SpecialProduct />
       <Blog />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

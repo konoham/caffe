@@ -5,12 +5,11 @@ import { useCartSuccses, useErrorMessage, useUser } from "../../utility/Store";
 import Swal from "sweetalert2";
 import useAddCart from "../../feature/addToCartFunc/AddCart";
 import Loader from "../Loader/Loader";
+import toast from "react-hot-toast";
 
 const AddToCartBtn = ({ name, price, images, country }) => {
+  const { mutate, isSuccess, isError } = useAddCart();
   const email = useUser((state) => state.user?.email);
-  const [isLoading, setIsLoading] = useState();
-  const setSuccess = useCartSuccses((state) => state.setSuccess);
-  const setMessageError = useErrorMessage((state) => state.setMessageError);
 
   const data = {
     name,
@@ -20,41 +19,26 @@ const AddToCartBtn = ({ name, price, images, country }) => {
     country,
   };
 
-  const addToCart = async (data, e) => {
-    setIsLoading(true);
+  const addToCart = async (e) => {
     e.preventDefault();
-    const create = await useAddCart(data);
-    const response = await create;
-    if (response.success === true) {
-      Swal.fire({
-        title: "Success!",
-        text: "item added to card!",
-        icon: "success",
-      });
-      setSuccess(response.success);
-      setIsLoading(false);
-    }
-    {
-      response?.error && setMessageError(response.data);
-      setTimeout(() => {
-        setMessageError(null);
-        setIsLoading(false);
-      }, 1500);
-    }
+    mutate(data, {
+      onSuccess: () => {
+        toast.success("success to add");
+      },
+      onError: () => {
+        toast.error("Already on cart");
+      },
+    });
   };
 
   return (
     <>
-      {!isLoading ? (
-        <button onClick={(e) => addToCart(data, e)}>
-          <Basket
-            size={32}
-            className={`text-primary border border-primary p-1.5 rounded-full ${isLoading ? "bg-slate-200 pointer-events-none" : ""}`}
-          />
-        </button>
-      ) : (
-        <Loader />
-      )}
+      <button onClick={addToCart}>
+        <Basket
+          size={32}
+          className={`rounded-full border border-primary p-1.5 text-primary`}
+        />
+      </button>
     </>
   );
 };

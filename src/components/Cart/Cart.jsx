@@ -9,24 +9,13 @@ import usePatchProduct from "../../feature/usePatchProduct";
 import useDeleteProduct from "../../feature/deletePoduct";
 import Swal from "sweetalert2";
 import BuyBtn from "./buyBtn";
+import { useGetProduct } from "../../libs/useGetProduct";
+import toast from "react-hot-toast";
 
 const Cart = ({ setOpenCart }) => {
-  const [product, setProduct] = useState();
-  const [isLoading, setIsLoading] = useState();
-  const success = useCartSuccses((state) => state.success);
-  const messageError = useErrorMessage((state) => state.messageError);
+  const { data, isLoading } = useGetProduct();
 
-  const getProduct = async () => {
-    setIsLoading(true);
-    try {
-      const req = await fetch("http://localhost:2000/CART");
-      const data = await req.json();
-      setProduct(data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  console.log(data);
 
   const UpdateQtyAndPrice = async (qty, id) => {
     const req = await usePatchProduct(qty, id);
@@ -56,15 +45,9 @@ const Cart = ({ setOpenCart }) => {
     });
   };
 
-  useEffect(() => {
-    getProduct();
-  }, [success, UpdateQtyAndPrice]);
-
-  messageError && console.log(messageError?.name);
-
   return (
-    <div className="flex h-svh flex-col z-30 shadow-xl">
-      <div className="flex-1 px-4 py-6 sm:px-6 bg-white backdrop-blur-sm rounded-md overflow-y-auto">
+    <div className="z-30 flex h-svh flex-col shadow-xl">
+      <div className="flex-1 overflow-y-auto rounded-md bg-white px-4 py-6 backdrop-blur-sm sm:px-6">
         <div className="flex items-start justify-between">
           <h2 className="text-lg font-medium text-gray-900">Shopping cart</h2>
           <div className="ml-3 flex h-7 items-center">
@@ -95,80 +78,72 @@ const Cart = ({ setOpenCart }) => {
 
         <div className="mt-8">
           <div className="flow-root">
-            {/* {!isLoading ? ( */}
             <ul role="list" className="-my-8 divide-y divide-gray-200">
-              {product &&
-                product.map((item) => (
-                  <li
-                    className={`flex py-6 ${messageError && messageError.name === item.name ? "bg-primary bg-opacity-15 bganimasi" : "bg-transparent"}`}
-                    key={item.id}
-                  >
-                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                      <img
-                        src={item.images}
-                        alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
-                        className="h-full w-full object-cover object-center"
-                      />
-                    </div>
+              {data?.map((item) => (
+                <li className={`flex py-6`} key={item.id}>
+                  <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                    <img
+                      src={item.images}
+                      alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                      className="h-full w-full object-cover object-center"
+                    />
+                  </div>
 
-                    <div className="ml-4 flex flex-1 flex-col text-black">
-                      <div>
-                        <div className="flex justify-between text-base font-medium ">
-                          <h3>
-                            <a href="#">{item.name}</a>
-                          </h3>
-                          <button
-                            type="button"
-                            className="ml-4 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                            onClick={() => deleteProduct(item.id)}
-                          >
-                            Remove
-                          </button>
-                        </div>
-                        <p className=" mt-1 text-sm text-gray-500">
-                          ${item.price * item.qty}
-                        </p>
+                  <div className="ml-4 flex flex-1 flex-col text-black">
+                    <div>
+                      <div className="flex justify-between text-base font-medium">
+                        <h3>
+                          <a href="#">{item.name}</a>
+                        </h3>
+                        <button
+                          type="button"
+                          className="ml-4 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                          onClick={() => deleteProduct(item.id)}
+                        >
+                          Remove
+                        </button>
                       </div>
-                      <div className="flex flex-1 items-center justify-between text-sm mt-5 -my-6">
-                        <p className="text-gray-500">qty {item.qty}</p>
-                        <div className="flex justify-center items-center gap-4 text-xl">
-                          <Plus
-                            size={20}
-                            className="rounded-full p-1 bg-black text-white"
-                            onClick={() =>
-                              item.qty !== 0
-                                ? UpdateQtyAndPrice(item.qty + 1, item.id)
-                                : deleteProduct()
-                            }
-                          />
-                          <h1 className="text-black text-xl">{item.qty}</h1>
+                      <p className="mt-1 text-sm text-gray-500">
+                        ${item.price * item.qty}
+                      </p>
+                    </div>
+                    <div className="-my-6 mt-5 flex flex-1 items-center justify-between text-sm">
+                      <p className="text-gray-500">qty {item.qty}</p>
+                      <div className="flex items-center justify-center gap-4 text-xl">
+                        <Plus
+                          size={20}
+                          className="rounded-full bg-black p-1 text-white"
+                          onClick={() =>
+                            item.qty !== 0
+                              ? UpdateQtyAndPrice(item.qty + 1, item.id)
+                              : deleteProduct()
+                          }
+                        />
+                        <h1 className="text-xl text-black">{item.qty}</h1>
 
-                          <Minus
-                            size={20}
-                            className="rounded-full p-1 bg-black text-white"
-                            onClick={() =>
-                              item.qty >= 2
-                                ? UpdateQtyAndPrice(item.qty - 1, item.id)
-                                : deleteProduct(item.id)
-                            }
-                          />
-                        </div>
-                        <div className="flex bg-gray-900">
-                          <BuyBtn
-                            id={item.id}
-                            name={item.name}
-                            price={item.price}
-                            qty={item.qty}
-                          />
-                        </div>
+                        <Minus
+                          size={20}
+                          className="rounded-full bg-black p-1 text-white"
+                          onClick={() =>
+                            item.qty >= 2
+                              ? UpdateQtyAndPrice(item.qty - 1, item.id)
+                              : deleteProduct(item.id)
+                          }
+                        />
+                      </div>
+                      <div className="flex bg-gray-900">
+                        <BuyBtn
+                          id={item.id}
+                          name={item.name}
+                          price={item.price}
+                          qty={item.qty}
+                        />
                       </div>
                     </div>
-                  </li>
-                ))}
+                  </div>
+                </li>
+              ))}
             </ul>
-            {/* ) : (
-              <LoaderDiv />
-            )} */}
           </div>
         </div>
       </div>

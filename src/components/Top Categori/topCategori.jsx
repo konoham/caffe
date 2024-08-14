@@ -3,11 +3,11 @@ import Categori from "./Categori";
 
 const TopCategori = () => {
   return (
-    <div className="w-full text-center my-8">
-      <h1 className="my-4 text-black font-bold text-2xl capitalize">
+    <div className="my-8 w-full text-center">
+      <h1 className="my-4 text-2xl font-bold capitalize text-black">
         top categori
       </h1>
-      <div className="w-full flex justify-center items-center flex-wrap gap-8 ">
+      <div className="flex w-full flex-wrap items-center justify-center gap-8">
         <Categori
           title={"Espresso"}
           path={"/Categori/Espresso"}

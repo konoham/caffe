@@ -22,17 +22,17 @@ export const CoffeProducts = () => {
   };
 
   return (
-    <div className="mb-8 rounded-xl w-full text-center" id="special-Coffee">
-      <h1 className="mt-4 mb-6 text-3xl font-bold text-black md:text-2xl">
+    <div className="mb-8 w-full rounded-xl text-center" id="special-Coffee">
+      <h1 className="mb-6 mt-4 text-3xl font-bold text-black md:text-2xl">
         Our Special Coffee
       </h1>
-      <div className="flex justify-center items-center gap-4 w-full font-normal text-sm mt-0 mb-5">
+      <div className="mb-5 mt-0 flex w-full items-center justify-center gap-4 text-sm font-normal">
         <CoffeeType text={"featured"} setpath={setpath} />
         <CoffeeType text={"latest"} setpath={setpath} />
         <CoffeeType text={"Bestseller"} setpath={setpath} />
       </div>
 
-      <div className="w-full flex justify-center items-center container mx-auto">
+      <div className="container mx-auto flex w-full items-center justify-center">
         <Swiper
           spaceBetween={10}
           slidesPerView={2}
@@ -59,16 +59,17 @@ export const CoffeProducts = () => {
           className="w-full"
         >
           {data?.map((e, i) => (
-            <React.Fragment key={i}>
-              <SwiperSlide className="flex flex-col md:flex-row md:justify-center w-full relative">
-                <Card
-                  name={e.name}
-                  price={e.price}
-                  images={e.images}
-                  country={e.country}
-                />
-              </SwiperSlide>
-            </React.Fragment>
+            <SwiperSlide
+              key={i}
+              className="relative flex w-full flex-col md:flex-row md:justify-center"
+            >
+              <Card
+                name={e.name}
+                price={e.price}
+                images={e.images}
+                country={e.country}
+              />
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>
