@@ -9,7 +9,7 @@ export default function Navbar() {
   const [change, setChange] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
-  const user = useUser((state) => state.user);
+  const { user } = useUser();
 
   useEffect(() => {
     const checkScroll = () => {

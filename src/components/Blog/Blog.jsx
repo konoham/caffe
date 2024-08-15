@@ -7,7 +7,7 @@ const Blog = () => {
         Latest Blogs
       </h1>
       <div className="container mx-auto flex flex-wrap items-center justify-center gap-4 text-sm text-black">
-        {BlogNews.map((item, i) => (
+        {BlogNews?.map((item, i) => (
           <div key={i} className="h-fit w-[350px] space-y-2 text-wrap">
             <img src={item.img} className="rounded-md object-cover" />
             <h3 className="text-base">{item.title}</h3>

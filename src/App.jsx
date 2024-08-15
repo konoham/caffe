@@ -23,7 +23,7 @@ import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 
 function App() {
-  const setUser = useUser((state) => state.setUser);
+  const { setUser } = useUser();
   const Storege = localStorage.getItem("user");
 
   useEffect(() => {

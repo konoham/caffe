@@ -20,7 +20,7 @@ export const HomePage = () => {
         modules={[Navigation, Autoplay]}
         className="h-full w-full"
       >
-        {DataSlide.map((item, i) => (
+        {DataSlide?.map((item, i) => (
           <SwiperSlide key={i} className="w-full">
             <img
               className="relative block h-full w-full bg-top object-cover"

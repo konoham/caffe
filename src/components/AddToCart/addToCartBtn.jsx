@@ -6,13 +6,13 @@ import useaddToCard from "../../feature/useAddToCart";
 
 const AddToCartBtn = ({ name, price, images, country }) => {
   const { mutate, isSuccess, isError } = useaddToCard();
-  const email = useUser((state) => state.user?.email);
+  const { user } = useUser();
 
   const value = {
     name,
     price,
     images,
-    email,
+    email: user?.email,
     country,
   };
 
