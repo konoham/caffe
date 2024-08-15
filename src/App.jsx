@@ -1,7 +1,12 @@
 import "./App.css";
 import Navbar from "./components/navbar";
 import { HomePage } from "./components/Hero/home";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Keunggulan from "./components/keunggulan";
 import Categori from "./components/Top Categori/topCategori";
 import Picture from "./components/ProfilPicture/Picture";
@@ -15,14 +20,17 @@ import Cart from "./components/Cart/Cart";
 import { useUser } from "./utility/Store";
 import TopCategori from "./components/Top Categori/topCategori";
 import { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 
 function App() {
   const setUser = useUser((state) => state.setUser);
   const Storege = localStorage.getItem("user");
 
-  if (Storege) {
-    setUser(JSON.parse(Storege));
-  }
+  useEffect(() => {
+    if (Storege) {
+      setUser(JSON.parse(Storege));
+    }
+  }, []);
 
   return (
     <Router>
@@ -47,10 +55,10 @@ function MainContent() {
       <Keunggulan />
       <TopCategori />
       <CoffeProducts />
-      {/* <Picture />
+      <Picture />
       <SpecialProduct />
       <Blog />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-import { axiosInstence } from "../../libs/axios";
+import { axiosInstence } from "../libs/axios";
 
-export const useAddCart = () => {
+const useaddToCard = () => {
   return useMutation({
     mutationFn: async (value) => {
       const { data } = await axiosInstence.post("/CART", value);
@@ -9,5 +9,4 @@ export const useAddCart = () => {
     },
   });
 };
-
-export default useAddCart;
+export default useaddToCard;

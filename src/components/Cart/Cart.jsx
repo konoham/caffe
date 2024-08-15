@@ -1,49 +1,33 @@
-import { useEffect, useState } from "react";
-import {
-  useCartSuccses,
-  useErrorMessage,
-  useIdProduct,
-} from "../../utility/Store";
 import { Minus, Plus } from "@phosphor-icons/react";
-import usePatchProduct from "../../feature/usePatchProduct";
-import useDeleteProduct from "../../feature/deletePoduct";
-import Swal from "sweetalert2";
 import BuyBtn from "./buyBtn";
-import { useGetProduct } from "../../libs/useGetProduct";
 import toast from "react-hot-toast";
+import useGetProduct from "../../feature/useGetProduct";
+import usePatchQty from "../../feature/usePatchProduct";
+import useDeleteProduct from "../../feature/useDeletePoduct";
+import { useState } from "react";
+import { useUser } from "../../utility/Store";
 
-const Cart = ({ setOpenCart }) => {
-  const { data, isLoading } = useGetProduct();
+const Cart = ({ setOpenCart, open }) => {
+  const { user } = useUser();
+  const [qty, setQty] = useState(1);
+  const { mutate: deleteProduct, isSuccess: succsesDelete } =
+    useDeleteProduct();
+  const { mutate, data: dataQty, isSuccess: succsesqty } = usePatchQty();
+  const { data } = useGetProduct(succsesDelete, succsesqty, user?.email, open);
 
-  console.log(data);
+  const UpdateQtyAndPrice = (qtyAndAction, id) => {
+    setQty(qtyAndAction);
+    console.log(id);
 
-  const UpdateQtyAndPrice = async (qty, id) => {
-    const req = await usePatchProduct(qty, id);
-    const response = req;
-    console.log(response);
+    const value = {
+      qty,
+      id,
+    };
+
+    mutate(value);
   };
 
-  const deleteProduct = async (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        const req = await useDeleteProduct(id);
-        const response = req;
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
-      }
-    });
-  };
+  if (succsesDelete) toast.success("success delete product");
 
   return (
     <div className="z-30 flex h-svh flex-col shadow-xl">
@@ -116,7 +100,7 @@ const Cart = ({ setOpenCart }) => {
                           onClick={() =>
                             item.qty !== 0
                               ? UpdateQtyAndPrice(item.qty + 1, item.id)
-                              : deleteProduct()
+                              : deleteProduct(item.id)
                           }
                         />
                         <h1 className="text-xl text-black">{item.qty}</h1>
@@ -131,7 +115,7 @@ const Cart = ({ setOpenCart }) => {
                           }
                         />
                       </div>
-                      <div className="flex bg-gray-900">
+                      <div>
                         <BuyBtn
                           id={item.id}
                           name={item.name}

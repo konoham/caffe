@@ -5,7 +5,7 @@ import { useUser } from "../../utility/Store";
 import AddToCartBtn from "../AddToCart/addToCartBtn";
 
 export const Card = (props) => {
-  const user = useUser((state) => state.user);
+  const { user } = useUser();
 
   const rupiah = (price) => {
     return new Intl.NumberFormat("id-ID", {
@@ -15,18 +15,18 @@ export const Card = (props) => {
   };
 
   return (
-    <div className="bg-white backdrop-blur-md text-start overflow-hidden hover:shadow-lg transition duration-300 w-fit my-2">
-      <div className="flex justify-start items-center flex-col gap-4 pb-4 text-black font-semibold shadow-sm object-fill w-[195px] h-fit">
+    <div className="w-fit overflow-hidden bg-white text-start backdrop-blur-md transition duration-300 hover:shadow-lg">
+      <div className="flex h-fit w-[195px] flex-col items-center justify-start gap-4 object-fill pb-4 font-semibold text-black shadow-sm">
         <div id="des" className="w-full">
           <img
             src={props.images}
             alt=""
-            className="w-full object-center object-cover rounded-t-md rounded-b-sm block mx-auto h-[220px] relative"
+            className="relative mx-auto block h-[220px] w-full rounded-b-sm rounded-t-md object-cover object-center"
             id="des"
           />
         </div>
-        <div className="flex justify-center items-center flex-col w-full px-4 gap-1">
-          <div className="text-sm flex justify-center items-center gap-1 pb-2">
+        <div className="flex w-full flex-col items-center justify-center gap-1 px-4">
+          <div className="flex items-center justify-center gap-1 pb-2 text-sm">
             <i name="" id="">
               <Star />
             </i>
@@ -43,8 +43,8 @@ export const Card = (props) => {
               <Star />
             </i>
           </div>
-          <h3 className="font-semibold text-center">{props.name}</h3>
-          <div className="flex justify-between items-center w-full pe-4">
+          <h3 className="text-center font-semibold">{props.name}</h3>
+          <div className="flex w-full items-center justify-between pe-4">
             {user?.email ? (
               <AddToCartBtn
                 name={props.name}
@@ -54,15 +54,15 @@ export const Card = (props) => {
                 qty={props.qty}
               />
             ) : (
-              <a href="/Login">
+              <a href="/auth">
                 <Basket
                   size={32}
-                  className="text-primary border border-primary p-1.5 rounded-full"
+                  className="rounded-full border border-primary p-1.5 text-primary"
                 />
               </a>
             )}
 
-            <h3 className="text-black font-bold">Rp.{props.price}</h3>
+            <h3 className="font-bold text-black">Rp.{props.price}</h3>
           </div>
         </div>
       </div>

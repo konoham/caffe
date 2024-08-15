@@ -1,110 +1,122 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useErrorMessage, useUser } from "../utility/Store";
-import { Basket, List } from "@phosphor-icons/react";
+import { Basket, List, SignOut } from "@phosphor-icons/react";
 import Cart from "./Cart/Cart";
+import { firesignOut } from "../utility/firebase";
 
 export default function Navbar() {
   const [change, setChange] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const user = useUser((state) => state.user);
-  const messageError = useErrorMessage((state) => state.messageError);
-  const checkScroll = () => {
-    if (window.scrollY) {
-      setIsOpen(false);
-      setOpenCart(false);
-      if (window.scrollY >= 100) {
-        setChange(true);
-      } else {
-        setChange(false);
-      }
-    }
-  };
-
-  window.addEventListener("scroll", checkScroll);
 
   useEffect(() => {
-    if (messageError) {
-      setOpenCart(true);
-      // alert("iufgaifgaifg");
-    }
-  }, [messageError]);
+    const checkScroll = () => {
+      if (window.scrollY) {
+        setIsOpen(false);
+        setOpenCart(false);
+        if (window.scrollY >= 100) {
+          setChange(true);
+        } else {
+          setChange(false);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", checkScroll);
+
+    return () => {
+      window.removeEventListener("scroll", checkScroll);
+    };
+  }, []);
+
+  // const handleSignOut = async () => {
+  //   const response = await firesignOut();
+  //   localStorage.removeItem("user");
+  //   console.log(response);
+  // };
 
   return (
     <header
-      className={`flex flex-wrap sm:justify-start sm:flex-nowrap w-full z-50 fixed bg-opacity-90 text-sm py-3 shadow-sm text-white ${change ? "bg-primary" : "bg-transparent"} duration-300`}
+      className={`fixed z-50 flex w-full flex-wrap bg-opacity-90 py-3 text-sm text-white shadow-sm sm:flex-nowrap sm:justify-start ${change ? "bg-primary" : "bg-transparent"} duration-300`}
     >
-      <nav className="md:px-56 w-full mx-auto px-4 flex items-center justify-between relative">
+      <nav className="relative mx-auto flex w-full items-center justify-between px-4">
         <div className="flex items-center justify-between">
           <a
-            className={`flex-none text-2xl font-bold flex justify-center items-center gap-2 ${change ? "text-white" : "text-primary"}`}
+            className={`flex flex-none items-center justify-center gap-2 text-2xl font-bold ${change ? "text-white" : "text-primary"}`}
             href="/"
           >
-            <img src="/iconweb.svg" className="w-8 h-8" />
+            <img src="/iconweb.svg" className="h-8 w-8" />
             AROMA
           </a>
         </div>
 
         <div
           id=""
-          className={`absolute bottom-0 top-full ${isOpen ? "right-0 " : "-right-52"} bg-black md:static md:bg-transparent flex flex-col justify-start items-center md:block`}
+          className={`absolute bottom-0 top-3/4 ${isOpen ? "right-0" : "-right-52"} flex w-56 flex-col items-center justify-start md:static md:block md:justify-center md:bg-transparent`}
         >
-          <div className="flex flex-col px-4 gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5 text-white ms-10">
+          <div className="ms-3 mt-5 flex min-h-svh w-full flex-col items-center gap-5 rounded-s-md bg-white px-4 pt-4 text-black sm:mt-0 sm:flex-row sm:justify-end sm:ps-5 md:min-h-full md:w-fit md:bg-transparent md:pt-0">
+            <div className="flex items-center justify-center gap-2 md:hidden">
+              <img
+                src={user?.photoURL ? user?.photoURL : "/iconweb.svg"}
+                className="size-8 rounded-full"
+              />
+              <p className="text-xs">{user?.email}</p>
+            </div>
             <a
-              className={`font-semibold text-sm ${change ? "text-white" : "text-primary hover:text-white"}`}
+              className={`text-sm font-semibold ${change ? "text-white" : "text-primary hover:text-white"}`}
               href="/"
             >
               Home
             </a>
             <a
-              className="font-semibold text-sm hover:text-primary "
+              className="text-sm font-semibold hover:text-primary"
               href="#keunggulan"
             >
               Keunggulan
             </a>
             <a
-              className="font-semibold text-sm hover:text-primary "
+              className="text-sm font-semibold hover:text-primary"
               href="#keunggulan"
             >
               Kategori
             </a>
             <a
-              className="font-semibold text-sm hover:text-primary "
+              className="text-sm font-semibold hover:text-primary"
               href="/#special-Coffee"
             >
               Pruduct
             </a>
-            <a className="font-semibold text-sm hover:text-primary " href="#">
+            <a
+              className="whitespace-nowrap text-sm font-semibold hover:text-primary"
+              href="#"
+            >
               Special Product
             </a>
-            <div className=" w-[30px] hidden">
-              <span className=" bg-black block w-full "></span>
-              <span className=" bg-black block w-full"></span>
-              <span className=" bg-black block w-full"></span>
+            <div className="hidden w-[30px]">
+              <span className="block w-full bg-black"></span>
+              <span className="block w-full bg-black"></span>
+              <span className="block w-full bg-black"></span>
             </div>
           </div>
         </div>
-        <div className="w-fit flex justify-center items-center gap-2">
+        <div className="flex w-fit items-center justify-center gap-2">
           {!user ? (
-            <Link to={`/Login`} className="w-fit">
+            <Link to={`/auth`} className="w-fit">
               <button
-                className={`font-semibold text-sm py-2 px-5 rounded-lg me-[-5rem] ${change ? "text-primary bg-white hover:text-black" : "text-white bg-primary hover:text-black"}`}
+                className={`me-[-5rem] rounded-lg px-5 py-2 text-sm font-semibold ${change ? "bg-white text-primary hover:text-black" : "bg-primary text-white hover:text-black"}`}
                 href="#"
               >
                 Login
               </button>
             </Link>
           ) : (
-            <details className="relative">
+            <details className="relative hidden md:inline-block">
               <summary className="list-none">
                 <img
-                  src={
-                    user.photoURL
-                      ? user.photoURL
-                      : "https://i.pinimg.com/564x/45/b6/fa/45b6fa403c4dd5f8f09a58a7d6d7453a.jpg"
-                  }
-                  className="w-8 h-8 rounded-full"
+                  src={user.photoURL ? user.photoURL : "/iconweb.svg"}
+                  className="size-8 rounded-full"
                 />
               </summary>
               <p className="absolute bottom-[-20px] left-[-4rem] text-xs">
@@ -113,22 +125,28 @@ export default function Navbar() {
             </details>
           )}
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center gap-4">
+          {user && (
+            <Basket
+              onClick={() => setOpenCart((prev) => !prev)}
+              size={28}
+              className="block"
+            />
+          )}
           <List
             onClick={() => setIsOpen((prev) => !prev)}
             size={32}
-            className="md:hidden block"
+            className="block md:hidden"
           />
-          <Basket
-            onClick={() => setOpenCart((prev) => !prev)}
-            size={32}
-            className=" block"
-          />
+
+          {/* <button onClick={handleSignOut} className="h-fit w-fit">
+            <SignOut size={32} />
+          </button> */}
         </div>
         <div
-          class={`absolute z-[99999] top-full bottom-0 pointer-events-auto w-[450px] ${openCart ? "right-0" : "right-[-100rem]"}`}
+          className={`pointer-events-auto absolute bottom-0 top-full z-[99999] w-[450px] ${openCart ? "right-0" : "right-[-100rem]"}`}
         >
-          <Cart setOpenCart={setOpenCart} />
+          <Cart setOpenCart={setOpenCart} open={openCart} />
         </div>
       </nav>
     </header>

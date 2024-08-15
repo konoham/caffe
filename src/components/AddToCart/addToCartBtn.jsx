@@ -1,17 +1,14 @@
 import { Basket, Log } from "@phosphor-icons/react";
-import React, { useState } from "react";
-import { useCartSuccses, useErrorMessage, useUser } from "../../utility/Store";
+import { useUser } from "../../utility/Store";
 
-import Swal from "sweetalert2";
-import useAddCart from "../../feature/addToCartFunc/AddCart";
-import Loader from "../Loader/Loader";
 import toast from "react-hot-toast";
+import useaddToCard from "../../feature/useAddToCart";
 
 const AddToCartBtn = ({ name, price, images, country }) => {
-  const { mutate, isSuccess, isError } = useAddCart();
+  const { mutate, isSuccess, isError } = useaddToCard();
   const email = useUser((state) => state.user?.email);
 
-  const data = {
+  const value = {
     name,
     price,
     images,
@@ -19,21 +16,17 @@ const AddToCartBtn = ({ name, price, images, country }) => {
     country,
   };
 
-  const addToCart = async (e) => {
+  const handleAddToCart = async (e) => {
     e.preventDefault();
-    mutate(data, {
-      onSuccess: () => {
-        toast.success("success to add");
-      },
-      onError: () => {
-        toast.error("Already on cart");
-      },
-    });
+    mutate(value);
   };
+
+  if (isSuccess) toast.success("success to add");
+  if (isError) toast.error("Already on cart");
 
   return (
     <>
-      <button onClick={addToCart}>
+      <button onClick={handleAddToCart}>
         <Basket
           size={32}
           className={`rounded-full border border-primary p-1.5 text-primary`}

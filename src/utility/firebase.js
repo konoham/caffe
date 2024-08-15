@@ -29,7 +29,7 @@ if (!getApps().length) {
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-export const singUp = async (email, password) => {
+export const signUp = async (email, password) => {
   try {
     const user = await createUserWithEmailAndPassword(auth, email, password);
     return user;
@@ -37,7 +37,7 @@ export const singUp = async (email, password) => {
     return error;
   }
 };
-export const singIn = async (email, password) => {
+export const signIn = async (email, password) => {
   try {
     const user = await signInWithEmailAndPassword(auth, email, password);
     return user;
@@ -45,13 +45,11 @@ export const singIn = async (email, password) => {
     return error;
   }
 };
-export const singOut = async (email, password) => {
-  try {
-    const result = await signOut(auth);
-    return result;
-  } catch (error) {
-    return error;
-  }
+export const firesignOut = async () => {
+  const auth = getAuth();
+
+  const result = await signOut(auth);
+  return result;
 };
 
 export const signUpGoogle = async () => {

@@ -52,7 +52,7 @@ export const CoffeProducts = () => {
               spaceBetween: 40,
             },
             1024: {
-              slidesPerView: 7,
+              slidesPerView: 6,
               spaceBetween: 10,
             },
           }}

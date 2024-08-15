@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
+import useBuyProduct from "../../feature/useBuyProduct";
+import { useUser } from "../../utility/Store";
 
 const BuyBtn = (props) => {
+  const { mutate, data } = useBuyProduct();
+
   useEffect(() => {
     const snapScript = "https://app.sandbox.midtrans.com/snap/snap.js";
     const clientKey = import.meta.env.VITE_CLIENT_KEY;
@@ -14,7 +18,7 @@ const BuyBtn = (props) => {
     };
   }, []);
 
-  const data = {
+  const value = {
     id: props.id,
     name: props.name,
     price: props.price,
@@ -23,16 +27,10 @@ const BuyBtn = (props) => {
 
   const buy = async () => {
     try {
-      const req = await fetch("http://localhost:2000/CART/BUY", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const res = await req.json();
-      console.log(res);
-      window.snap.pay(res.token);
+      mutate(value);
+      if (data) {
+        window.snap.pay(data?.token);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +39,7 @@ const BuyBtn = (props) => {
   return (
     <button
       type="button"
-      className="font-medium text-white px-5 py-2 rounded-lg bg-primary hover:text-indigo-500"
+      className="rounded-lg bg-primary px-5 py-2 font-medium text-white hover:text-indigo-500"
       onClick={buy}
     >
       Buy
