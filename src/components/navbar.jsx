@@ -78,19 +78,19 @@ export default function Navbar() {
             </a>
             <a
               className="text-sm font-semibold hover:text-primary"
-              href="#keunggulan"
+              href="#top-categori"
             >
               Kategori
             </a>
             <a
               className="text-sm font-semibold hover:text-primary"
-              href="/#special-Coffee"
+              href="#special-Coffee"
             >
               Pruduct
             </a>
             <a
               className="whitespace-nowrap text-sm font-semibold hover:text-primary"
-              href="#"
+              href="#special-product"
             >
               Special Product
             </a>

@@ -3,7 +3,7 @@ import Categori from "./Categori";
 
 const TopCategori = () => {
   return (
-    <div className="my-8 w-full text-center">
+    <div id="top-categori" className="my-8 w-full text-center">
       <h1 className="my-4 text-2xl font-bold capitalize text-black">
         top categori
       </h1>
