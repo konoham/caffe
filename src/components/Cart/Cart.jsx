@@ -26,6 +26,8 @@ const Cart = ({ setOpenCart, open }) => {
 
     mutate(value);
   };
+  console.log(data?.data);
+  const items = data?.data;
 
   if (succsesDelete) toast.success("success delete product");
 
@@ -63,9 +65,8 @@ const Cart = ({ setOpenCart, open }) => {
         <div className="mt-8">
           <div className="flow-root">
             <ul role="list" className="-my-8 divide-y divide-gray-200">
-              {user &&
-                data &&
-                data?.map((item) => (
+              {items?.length !== 0 &&
+                items?.map((item) => (
                   <li className={`flex py-6`} key={item.id}>
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
