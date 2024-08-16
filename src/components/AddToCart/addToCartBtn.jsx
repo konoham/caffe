@@ -18,7 +18,9 @@ const AddToCartBtn = ({ name, price, images, country }) => {
 
   const handleAddToCart = async (e) => {
     e.preventDefault();
-    mutate(value);
+    if (user) {
+      mutate(value);
+    }
   };
 
   if (isSuccess) toast.success("success to add");

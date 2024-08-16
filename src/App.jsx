@@ -24,9 +24,9 @@ import { useEffect } from "react";
 
 function App() {
   const { setUser } = useUser();
-  const Storege = localStorage.getItem("user");
 
   useEffect(() => {
+    const Storege = localStorage.getItem("user");
     if (Storege) {
       setUser(JSON.parse(Storege));
     }

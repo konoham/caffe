@@ -65,10 +65,10 @@ const Cart = ({ setOpenCart, open }) => {
         <div className="mt-8">
           <div className="flow-root">
             <ul role="list" className="-my-8 divide-y divide-gray-200">
-              {items?.length !== 0 &&
+              {data?.data &&
                 items?.map((item) => (
                   <li className={`flex py-6`} key={item?.id}>
-                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                    <div className="size-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
                         src={item?.images}
                         alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
