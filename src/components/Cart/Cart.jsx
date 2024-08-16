@@ -67,10 +67,10 @@ const Cart = ({ setOpenCart, open }) => {
             <ul role="list" className="-my-8 divide-y divide-gray-200">
               {items?.length !== 0 &&
                 items?.map((item) => (
-                  <li className={`flex py-6`} key={item.id}>
+                  <li className={`flex py-6`} key={item?.id}>
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
-                        src={item.images}
+                        src={item?.images}
                         alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                         className="h-full w-full object-cover object-center"
                       />
@@ -80,50 +80,50 @@ const Cart = ({ setOpenCart, open }) => {
                       <div>
                         <div className="flex justify-between text-base font-medium">
                           <h3>
-                            <a href="#">{item.name}</a>
+                            <a href="#">{item?.name}</a>
                           </h3>
                           <button
                             type="button"
                             className="ml-4 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                            onClick={() => deleteProduct(item.id)}
+                            onClick={() => deleteProduct(item?.id)}
                           >
                             Remove
                           </button>
                         </div>
                         <p className="mt-1 text-sm text-gray-500">
-                          ${item.price * item.qty}
+                          ${item?.price * item?.qty}
                         </p>
                       </div>
                       <div className="-my-6 mt-5 flex flex-1 items-center justify-between text-sm">
-                        <p className="text-gray-500">qty {item.qty}</p>
+                        <p className="text-gray-500">qty {item?.qty}</p>
                         <div className="flex items-center justify-center gap-4 text-xl">
                           <Plus
                             size={20}
                             className="rounded-full bg-black p-1 text-white"
                             onClick={() =>
-                              item.qty !== 0
-                                ? UpdateQtyAndPrice(item.qty + 1, item.id)
-                                : deleteProduct(item.id)
+                              item?.qty !== 0
+                                ? UpdateQtyAndPrice(item?.qty + 1, item?.id)
+                                : deleteProduct(item?.id)
                             }
                           />
-                          <h1 className="text-xl text-black">{item.qty}</h1>
+                          <h1 className="text-xl text-black">{item?.qty}</h1>
 
                           <Minus
                             size={20}
                             className="rounded-full bg-black p-1 text-white"
                             onClick={() =>
-                              item.qty >= 2
-                                ? UpdateQtyAndPrice(item.qty - 1, item.id)
-                                : deleteProduct(item.id)
+                              item?.qty >= 2
+                                ? UpdateQtyAndPrice(item?.qty - 1, item?.id)
+                                : deleteProduct(item?.id)
                             }
                           />
                         </div>
                         <div>
                           <BuyBtn
-                            id={item.id}
-                            name={item.name}
-                            price={item.price}
-                            qty={item.qty}
+                            id={item?.id}
+                            name={item?.name}
+                            price={item?.price}
+                            qty={item?.qty}
                           />
                         </div>
                       </div>
