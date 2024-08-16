@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     const Storege = localStorage.getItem("user");
-    if (Storege) {
+    if (Storege !== undefined) {
       setUser(JSON.parse(Storege));
     }
   }, []);
