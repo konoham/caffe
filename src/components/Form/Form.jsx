@@ -31,7 +31,7 @@ const FormPage = () => {
       const response = isSignUp
         ? await signUp(email, password)
         : await signIn(email, password);
-      localStorage.setItem("user", JSON.stringify(response.user));
+      localStorage.setItem("user", response.user);
       setUser(response.user);
       navigate("/");
     } catch (error) {
@@ -42,7 +42,7 @@ const FormPage = () => {
   const signUpWithGoogle = async () => {
     try {
       const response = await signUpGoogle();
-      localStorage.setItem("user", JSON.stringify(response.user));
+      localStorage.setItem("user", response.user);
       setUser(response.user);
       navigate("/");
     } catch (error) {

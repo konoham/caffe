@@ -30,7 +30,7 @@ function App() {
     if (!Storege) {
       return;
     }
-    setUser(JSON.parse(Storege));
+    setUser(Storege);
   }, []);
 
   return (
