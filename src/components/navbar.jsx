@@ -57,13 +57,7 @@ export default function Navbar() {
           className={`absolute bottom-0 top-3/4 ${isOpen ? "right-0" : "-right-52"} flex w-56 flex-col items-center justify-start md:static md:block md:justify-center md:bg-transparent`}
         >
           <div className="ms-3 mt-5 flex min-h-svh w-full flex-col items-center gap-5 rounded-s-md bg-white px-4 pt-4 text-black sm:mt-0 sm:flex-row sm:justify-end sm:ps-5 md:min-h-full md:w-fit md:bg-transparent md:pt-0">
-            <div className="flex items-center justify-center gap-2 md:hidden">
-              <img
-                src={user?.photoURL ? user?.photoURL : "/iconweb.svg"}
-                className="size-8 rounded-full"
-              />
-              <p className="text-xs">{user?.email}</p>
-            </div>
+            
             <a
               className={`text-sm font-semibold ${change ? "text-white" : "text-primary hover:text-white"}`}
               href="/"
@@ -152,3 +146,11 @@ export default function Navbar() {
     </header>
   );
 }
+
+<div className="flex items-center justify-center gap-2 md:hidden">
+              <img
+                src={user?.photoURL ? user?.photoURL : "/iconweb.svg"}
+                className="size-8 rounded-full"
+              />
+              <p className="text-xs">{user?.email}</p>
+            </div>
