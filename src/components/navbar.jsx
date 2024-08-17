@@ -106,15 +106,19 @@ export default function Navbar() {
             </Link>
           ) : (
             <details className="relative hidden md:inline-block">
-              <summary className="list-none">
-                <img
-                  src={user.photoURL ? user.photoURL : "/iconweb.svg"}
-                  className="size-8 rounded-full"
-                />
-              </summary>
-              <p className="absolute bottom-[-20px] left-[-4rem] text-xs">
-                {user.email}
-              </p>
+              {!user && (
+                <>
+                  <summary className="list-none">
+                    <img
+                      src={user.photoURL ? user.photoURL : "/iconweb.svg"}
+                      className="size-8 rounded-full"
+                    />
+                  </summary>
+                  <p className="absolute bottom-[-20px] left-[-4rem] text-xs">
+                    {user.email}
+                  </p>
+                </>
+              )}
             </details>
           )}
         </div>

@@ -17,7 +17,8 @@ const Cart = ({ setOpenCart, open }) => {
 
   const UpdateQtyAndPrice = (qtyAndAction, id) => {
     setQty(qtyAndAction);
-    console.log(id);
+
+    console.log(qty);
 
     const value = {
       qty,
@@ -28,8 +29,6 @@ const Cart = ({ setOpenCart, open }) => {
   };
   console.log(data?.data);
   const items = data?.data;
-
-  if (succsesDelete) toast.success("success delete product");
 
   return (
     <div className="z-30 flex h-svh flex-col shadow-xl">
