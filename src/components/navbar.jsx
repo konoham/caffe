@@ -105,9 +105,9 @@ export default function Navbar() {
               </button>
             </Link>
           ) : (
-            <details className="relative hidden md:inline-block">
+            <>
               {!user && (
-                <>
+                <details className="relative hidden md:inline-block">
                   <summary className="list-none">
                     <img
                       src={user.photoURL ? user.photoURL : "/iconweb.svg"}
@@ -117,9 +117,9 @@ export default function Navbar() {
                   <p className="absolute bottom-[-20px] left-[-4rem] text-xs">
                     {user.email}
                   </p>
-                </>
+                </details>
               )}
-            </details>
+            </>
           )}
         </div>
         <div className="flex items-center justify-center gap-4">
