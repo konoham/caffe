@@ -26,7 +26,7 @@ export const HomePage = () => {
               className="relative block h-full w-full bg-top object-cover"
               src={item.img}
             />
-            <div className="container absolute left-1/2 top-1/2 mx-auto me-auto translate-x-[-50%] px-6 md:px-0">
+            <div className="container absolute top-1/2 mx-auto me-auto px-6 md:left-20 md:px-0">
               <h1
                 className="mb-4 w-[60%] text-wrap text-2xl font-bold capitalize tracking-wide md:w-1/3 md:text-5xl"
                 id="textHome"
