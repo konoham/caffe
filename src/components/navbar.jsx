@@ -56,11 +56,10 @@ export default function Navbar() {
           id=""
           className={`absolute bottom-0 top-3/4 ${isOpen ? "right-0" : "-right-52"} flex w-56 flex-col items-center justify-start md:static md:block md:justify-center md:bg-transparent`}
         >
-          <div className="ms-3 mt-5 flex min-h-svh w-full flex-col items-center gap-5 rounded-s-md bg-white px-4 pt-4 text-black sm:mt-0 sm:flex-row sm:justify-end sm:ps-5 md:min-h-full md:w-fit md:bg-transparent md:pt-0">
-            <a
-              className={`text-sm font-semibold ${change ? "text-white" : "text-primary hover:text-white"}`}
-              href="/"
-            >
+          <div
+            className={`ms-3 mt-5 flex min-h-svh w-full flex-col items-center gap-5 rounded-s-md bg-white px-4 pt-4 ${change ? "text-white" : "text-primary hover:text-white"} sm:mt-0 sm:flex-row sm:justify-end sm:ps-5 md:min-h-full md:w-fit md:bg-transparent md:pt-0`}
+          >
+            <a className={`text-sm font-semibold`} href="/">
               Home
             </a>
             <a
