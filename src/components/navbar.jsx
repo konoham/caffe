@@ -1,14 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useErrorMessage, useUser } from "../utility/Store";
-import { Basket, List, SignOut } from "@phosphor-icons/react";
+import { useUser } from "../utility/Store";
+import { Basket, List } from "@phosphor-icons/react";
 import Cart from "./Cart/Cart";
-import { firesignOut } from "../utility/firebase";
+import { useRef } from "react";
 
 export default function Navbar() {
   const [change, setChange] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+  const sidebar = useRef(null);
+  const triger = useRef(null);
+
+  const handleClose = (event) => {
+    if (
+      sidebar.current &&
+      !sidebar.current.contains(event.target) &&
+      triger.current &&
+      !triger.current.contains(event.target)
+    ) {
+      setIsOpen(false);
+    }
+  };
+  window.addEventListener("click", handleClose);
+
   const { user } = useUser();
 
   useEffect(() => {
@@ -57,39 +72,40 @@ export default function Navbar() {
           className={`absolute bottom-0 top-3/4 ${isOpen ? "right-0" : "-right-52"} flex w-56 flex-col items-center justify-start md:static md:block md:justify-center md:bg-transparent`}
         >
           <div
-            className={`ms-3 mt-5 flex min-h-svh w-full flex-col items-center gap-5 rounded-s-md bg-white px-4 pt-4 ${change ? "text-black" : "text-white"} text-white sm:mt-0 sm:flex-row sm:justify-end sm:ps-5 md:min-h-full md:w-fit md:bg-transparent md:pt-0`}
+            ref={sidebar}
+            className={`anav ms-3 mt-5 flex min-h-svh w-full flex-col items-start justify-start gap-5 rounded-s-md bg-white px-4 pt-4 md:items-center ${change ? "text-black" : "text-white"} whitespace-nowrap text-sm font-semibold sm:mt-0 sm:flex-row sm:justify-end sm:ps-5 md:min-h-full md:w-fit md:bg-transparent md:pt-0 md:text-white`}
           >
             <a
-              className={`text-sm font-semibold ${change ? "text-white" : "text-primary hover:text-white"}`}
+              className={`md:after:bg-white ${change ? "text-white" : "text-primary hover:text-white"}`}
               href="/"
             >
               Home
             </a>
             <a
-              className="text-sm font-semibold hover:text-primary"
+              className={` ${change ? "text-black after:bg-white hover:text-white" : "text-white after:bg-primary hover:text-primary"} `}
               href="#keunggulan"
             >
               Keunggulan
             </a>
             <a
-              className="text-sm font-semibold hover:text-primary"
+              className={` ${change ? "text-black after:bg-white hover:text-white" : "text-white after:bg-primary hover:text-primary"} `}
               href="#top-categori"
             >
               Kategori
             </a>
             <a
-              className="text-sm font-semibold hover:text-primary"
+              className={` ${change ? "text-black after:bg-white hover:text-white" : "text-white after:bg-primary hover:text-primary"} `}
               href="#special-Coffee"
             >
               Pruduct
             </a>
             <a
-              className="whitespace-nowrap text-sm font-semibold hover:text-primary"
+              className={` ${change ? "text-black after:bg-white hover:text-white" : "text-white after:bg-primary hover:text-primary"} `}
               href="#special-product"
             >
               Special Product
             </a>
-            <div className="hidden w-[30px]">
+            <div className="hidden w-[30px] cursor-progress">
               <span className="block w-full bg-black"></span>
               <span className="block w-full bg-black"></span>
               <span className="block w-full bg-black"></span>
@@ -135,6 +151,7 @@ export default function Navbar() {
           <List
             onClick={() => setIsOpen((prev) => !prev)}
             size={32}
+            ref={triger}
             className="block md:hidden"
           />
 
